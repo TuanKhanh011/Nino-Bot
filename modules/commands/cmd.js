@@ -152,17 +152,17 @@ module.exports.run = function ({ event, args, api }) {
       break;
 		}
         case "load":
-        case "-l": {
+        case "l": {
             if (moduleList.length == 0) return api.sendMessage("❎ Tên module không được để trống", threadID, messageID);
             else return loadCommand({ moduleList, threadID, messageID });
         }
         case "unload":
-        case "-ul": {
+        case "u": {
             if (moduleList.length == 0) return api.sendMessage("❎ Tên module không được để trống", threadID, messageID);
             else return unloadModule({ moduleList, threadID, messageID });
         }
         case "loadAll":
-        case "-la": {
+        case "a": {
             moduleList = readdirSync(__dirname).filter((file) => file.endsWith(".js") && !file.includes('example'));
             moduleList = moduleList.map(item => item.replace(/\.js/g, ""));
             return loadCommand({ moduleList, threadID, messageID });
